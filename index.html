@@ -32,9 +32,25 @@
   </style>
 </head>
 
+  <script>
+  (function () {
+    const tz = 'Asia/Taipei';
+    const now = new Date();
+
+    const fmt = (d, opt) => new Intl.DateTimeFormat('zh-TW', { timeZone: tz, ...opt }).format(d);
+
+    const start = fmt(now, { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' });
+    const endDate = new Date(now);
+    endDate.setDate(endDate.getDate() + 6);
+    const end = fmt(endDate, { month: '2-digit', day: '2-digit', weekday: 'short' });
+
+    document.getElementById('tw-date').textContent = `台灣日期：${start} ～ ${end}`;
+  })();
+</script>
 <body>
   <div class="wrap">
     <p class="title">台南｜7 日天氣</p>
+    <p class="title" id="tw-date"></p>
 
     <div class="card">
       <a class="weatherwidget-io"
