@@ -4,15 +4,47 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tainan Weather</title>
+  <style>
+    body{
+      margin:0;
+      padding:24px;
+      background:#ffffff;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+    }
+    .title{
+      font-size:14px;
+      color:#666;
+      margin:0 0 10px 2px;
+      letter-spacing:.5px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid #eaeaea;
+      border-radius:14px;
+      padding:14px 14px;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+  </style>
 </head>
-<body>
 
-  <a class="weatherwidget-io"
-     href="https://forecast7.com/zh-tw/23d00120d23/tainan-city/"
-     data-label_1="TAINAN"
-     data-label_2="WEATHER"
-     data-font="微軟正黑體 (Microsoft JhengHei)"
-     data-theme="original">TAINAN WEATHER</a>
+<body>
+  <div class="wrap">
+    <p class="title">台南｜7 日天氣</p>
+
+    <div class="card">
+      <a class="weatherwidget-io"
+         href="https://forecast7.com/zh-tw/23d00120d23/tainan-city/"
+         data-label_1="TAINAN"
+         data-label_2="WEATHER"
+         data-font="Noto Sans TC"
+         data-theme="pure">TAINAN WEATHER</a>
+    </div>
+  </div>
 
   <script>
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
@@ -20,6 +52,5 @@
   js.src='https://weatherwidget.io/js/widget.min.js';
   fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
   </script>
-
 </body>
 </html>
