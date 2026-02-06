@@ -32,25 +32,27 @@
   </style>
 </head>
 
-  <script>
-  (function () {
-    const tz = 'Asia/Taipei';
-    const now = new Date();
-
-    const fmt = (d, opt) => new Intl.DateTimeFormat('zh-TW', { timeZone: tz, ...opt }).format(d);
-
-    const start = fmt(now, { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' });
-    const endDate = new Date(now);
-    endDate.setDate(endDate.getDate() + 6);
-    const end = fmt(endDate, { month: '2-digit', day: '2-digit', weekday: 'short' });
-
-    document.getElementById('tw-date').textContent = `台灣日期：${start} ～ ${end}`;
-  })();
-</script>
 <body>
   <div class="wrap">
     <p class="title">台南｜7 日天氣</p>
-    <p class="title" id="tw-date"></p>
+    <p class="title" id="tw-date">台灣日期：載入中…</p>
+
+    <!-- 日期顯示：放在 tw-date 後面，避免抓不到元素 -->
+    <script>
+      (function () {
+        const tz = 'Asia/Taipei';
+        const now = new Date();
+        const fmt = (d, opt) => new Intl.DateTimeFormat('zh-TW', { timeZone: tz, ...opt }).format(d);
+
+        const start = fmt(now, { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' });
+        const endDate = new Date(now);
+        endDate.setDate(endDate.getDate() + 6);
+        const end = fmt(endDate, { month: '2-digit', day: '2-digit', weekday: 'short' });
+
+        const el = document.getElementById('tw-date');
+        if (el) el.textContent = `台灣日期：${start} ～ ${end}`;
+      })();
+    </script>
 
     <div class="card">
       <a class="weatherwidget-io"
@@ -62,11 +64,12 @@
     </div>
   </div>
 
+  <!-- WeatherWidget 載入 -->
   <script>
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-  if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
-  js.src='https://weatherwidget.io/js/widget.min.js';
-  fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+    js.src='https://weatherwidget.io/js/widget.min.js';
+    fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
   </script>
 </body>
 </html>
